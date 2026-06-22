@@ -5,7 +5,7 @@ const navLinks = [
   { href: "#neighborhood", label: "Neighborhood" },
   { href: "#eligibility", label: "Eligibility" },
   { href: "#gallery", label: "Gallery" },
-  { href: "#contact", label: "Interest List" },
+  { href: "#eligibility", label: "Check Eligibility" },
 ]
 
 export function SiteFooter() {
@@ -22,6 +22,9 @@ export function SiteFooter() {
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               A development by JL Capital
+            </p>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              Leasing &amp; inquiries by Associated Real Estate Advisors (AREA)
             </p>
           </div>
 
@@ -48,17 +51,21 @@ export function SiteFooter() {
               Get in touch
             </p>
             <a
-              href="#contact"
+              href="#eligibility"
               className="mt-4 inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground transition-colors hover:bg-primary/90"
             >
-              Join Interest List
+              Check If You May Qualify
             </a>
-            <div className="mt-5 flex gap-4 text-sm text-muted-foreground">
-              <a href="#" className="transition-colors hover:text-primary">
-                Instagram
+            {/* TODO: replace with AREA's real leasing email + phone */}
+            <div className="mt-5 flex flex-col gap-1 text-sm text-muted-foreground">
+              <a
+                href="mailto:leasing@area-hawaii.com"
+                className="transition-colors hover:text-primary"
+              >
+                leasing@area-hawaii.com
               </a>
-              <a href="#" className="transition-colors hover:text-primary">
-                Facebook
+              <a href="tel:+18080000000" className="transition-colors hover:text-primary">
+                (808) 000-0000
               </a>
             </div>
           </div>

@@ -2,6 +2,10 @@ import { Reveal } from "@/components/reveal"
 
 const faqs = [
   {
+    q: "What does “80% AMI” mean?",
+    a: "AMI is the Area Median Income — the midpoint income for Honolulu. Amana Lofts is reserved for households earning at or below 80% of it, so there’s an income limit based on how many people are in your household. The estimator above shows the limit for your household size.",
+  },
+  {
     q: "What makes Amana Lofts affordable?",
     a: "Residences are reserved for qualifying households whose income falls at or below designated limits based on Area Median Income (AMI).",
   },

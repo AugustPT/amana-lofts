@@ -15,9 +15,9 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: 'Amana Lofts — Affordable Urban Living in the Heart of Honolulu',
+  title: 'Amana Lofts — 80% AMI Affordable Rental Homes in Honolulu',
   description:
-    'Amana Lofts offers 64 modern, affordable rental residences at 765 Amana Street in Honolulu, steps from Ala Moana. Studios, one- and two-bedroom lofts. Join the interest list.',
+    'Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-, and two-bedroom homes at 765 Amana Street near Ala Moana. Check if you may qualify in about a minute. Leasing by Associated Real Estate Advisors (AREA).',
   generator: 'v0.app',
   icons: {
     icon: [

@@ -39,6 +39,16 @@ export function About() {
               by JL Capital designed to make in-town living attainable.
             </p>
           </Reveal>
+          <Reveal delay={0.125}>
+            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
+              It’s an{" "}
+              <span className="text-foreground">80% AMI affordable rental community</span>{" "}
+              — homes are reserved for households earning at or below 80% of Honolulu’s
+              Area Median Income (for a family of four, generally under about $109,000 a
+              year). The quick eligibility check below estimates the limit for your
+              household in about a minute.
+            </p>
+          </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
               Just off Ala Moana, you&apos;re steps from shopping, dining, jobs,

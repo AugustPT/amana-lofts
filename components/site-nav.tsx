@@ -56,14 +56,14 @@ export function SiteNav() {
           ))}
         </div>
         <a
-          href="#contact"
+          href="#eligibility"
           className={`rounded-full px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${
             scrolled
               ? "bg-primary text-primary-foreground hover:bg-primary/90"
               : "border border-background/40 text-background hover:bg-background hover:text-foreground"
           }`}
         >
-          Join Interest List
+          Check Eligibility
         </a>
       </nav>
     </header>

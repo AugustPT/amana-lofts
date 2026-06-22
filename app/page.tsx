@@ -35,9 +35,9 @@ export default function Page() {
               See if Amana Lofts is right for you.
             </h2>
             <p className="mx-auto mt-5 max-w-xl text-pretty text-lg leading-relaxed text-muted-foreground">
-              Answer a few quick questions to check the eligibility criteria and
-              estimate your income limit — then join the interest list. Your
-              answers stay confidential.
+              Answer a few quick questions to see if you may qualify and estimate
+              your income limit. Your details go straight to the AREA leasing team,
+              and your answers stay confidential.
             </p>
           </div>
           <EligibilityScreener />

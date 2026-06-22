@@ -25,7 +25,7 @@ export function Hero() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="mb-6 font-mono text-xs uppercase tracking-[0.35em] text-background/80"
         >
-          Ala Moana &middot; Honolulu, Hawai&#699;i
+          80% AMI Affordable Rental Housing &middot; 765 Amana Street
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -33,7 +33,7 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
           className="max-w-4xl text-balance font-serif text-5xl leading-[1.02] text-background sm:text-7xl lg:text-8xl"
         >
-          Live closer to everything.
+          Affordable homes in the heart of Honolulu.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
@@ -41,8 +41,9 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
           className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-background/90 sm:text-xl"
         >
-          Affordable rental residences in the heart of Honolulu — steps from Ala
-          Moana, shopping, dining, transit, and the beach.
+          Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-,
+          and two-bedroom homes near Ala Moana, reserved for income-qualified
+          households.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -51,16 +52,16 @@ export function Hero() {
           className="mt-10 flex flex-col gap-3 sm:flex-row"
         >
           <a
-            href="#contact"
+            href="#eligibility"
             className="inline-flex items-center justify-center rounded-full bg-background px-8 py-4 font-mono text-xs uppercase tracking-widest text-foreground transition-transform hover:scale-[1.02]"
           >
-            Join Interest List
+            Check If You May Qualify
           </a>
           <a
-            href="#eligibility"
+            href="#residences"
             className="inline-flex items-center justify-center rounded-full border border-background/50 px-8 py-4 font-mono text-xs uppercase tracking-widest text-background backdrop-blur-sm transition-colors hover:bg-background/10"
           >
-            Check Eligibility
+            See the homes
           </a>
         </motion.div>
       </div>
