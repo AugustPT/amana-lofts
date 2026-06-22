@@ -9,28 +9,21 @@ export function Hero() {
       id="top"
       className="relative flex min-h-[100svh] items-end overflow-hidden"
     >
-      <motion.div
-        initial={{ scale: 1.08, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.5, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/hero-lifestyle.png"
-          alt="Ala Moana Beach Park and the Honolulu skyline at golden hour"
-          fill
-          priority
-          className="object-cover"
-        />
-      </motion.div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-black/10" />
+      <Image
+        src="/hero-lifestyle.png"
+        alt="Ala Moana Beach Park and the Honolulu skyline at golden hour"
+        fill
+        priority
+        className="object-cover"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-foreground/10" />
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-24 lg:px-10 lg:pb-28">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-6 font-mono text-xs uppercase tracking-[0.35em] text-white/80"
+          className="mb-6 font-mono text-xs uppercase tracking-[0.35em] text-background/80"
         >
           Ala Moana &middot; Honolulu, Hawai&#699;i
         </motion.p>
@@ -38,7 +31,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-          className="max-w-4xl text-balance font-serif text-5xl leading-[1.02] text-white sm:text-7xl lg:text-8xl"
+          className="max-w-4xl text-balance font-serif text-5xl leading-[1.02] text-background sm:text-7xl lg:text-8xl"
         >
           Live closer to everything.
         </motion.h1>
@@ -46,7 +39,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
-          className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-white/90 sm:text-xl"
+          className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-background/90 sm:text-xl"
         >
           Affordable rental residences in the heart of Honolulu — steps from Ala
           Moana, shopping, dining, transit, and the beach.
@@ -59,13 +52,13 @@ export function Hero() {
         >
           <a
             href="#contact"
-            className="inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-mono text-xs uppercase tracking-widest text-black transition-transform hover:scale-[1.02]"
+            className="inline-flex items-center justify-center rounded-full bg-background px-8 py-4 font-mono text-xs uppercase tracking-widest text-foreground transition-transform hover:scale-[1.02]"
           >
             Join Interest List
           </a>
           <a
             href="#eligibility"
-            className="inline-flex items-center justify-center rounded-full border border-white/50 px-8 py-4 font-mono text-xs uppercase tracking-widest text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+            className="inline-flex items-center justify-center rounded-full border border-background/50 px-8 py-4 font-mono text-xs uppercase tracking-widest text-background backdrop-blur-sm transition-colors hover:bg-background/10"
           >
             Check Eligibility
           </a>

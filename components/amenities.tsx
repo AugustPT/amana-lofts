@@ -25,7 +25,7 @@ export function Amenities() {
   return (
     <section
       id="amenities"
-      className="border-t border-border/40 bg-secondary/10 py-32 lg:py-48"
+      className="border-t border-border bg-secondary/30 py-24 lg:py-32"
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl">

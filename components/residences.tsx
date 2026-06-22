@@ -20,7 +20,7 @@ const units: Unit[] = [
     image: "/unit-studio.png",
     blurb:
       "An efficient, light-filled open layout that makes the most of every square foot.",
-    size: "289 - 346 sq ft",
+    size: "~480 sq ft",
     beds: "Open plan",
     baths: "1 bath",
     plan: "studio",
@@ -30,7 +30,7 @@ const units: Unit[] = [
     image: "/unit-one-bed.png",
     blurb:
       "A defined bedroom and a bright living space with contemporary finishes for everyday comfort.",
-    size: "365 - 393 sq ft",
+    size: "~620 sq ft",
     beds: "1 bedroom",
     baths: "1 bath",
     plan: "one",
@@ -40,7 +40,7 @@ const units: Unit[] = [
     image: "/unit-two-bed.png",
     blurb:
       "A spacious, flexible layout with room to share — ideal for roommates or a growing household.",
-    size: "471 - 561 sq ft",
+    size: "~880 sq ft",
     beds: "2 bedrooms",
     baths: "1 bath",
     plan: "two",
@@ -90,7 +90,7 @@ export function Residences() {
   const current = units[active]
 
   return (
-    <section id="residences" className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48">
+    <section id="residences" className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
       <div className="max-w-2xl">
         <p className="mb-5 font-mono text-xs uppercase tracking-[0.3em] text-primary">
           The Residences
