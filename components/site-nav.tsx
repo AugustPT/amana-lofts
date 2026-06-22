@@ -23,9 +23,9 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border bg-background/85 backdrop-blur-md"
+          ? "glass-header"
           : "border-b border-transparent"
       }`}
     >
@@ -33,14 +33,14 @@ export function SiteNav() {
         <a
           href="#top"
           className={`font-serif text-xl tracking-tight transition-colors ${
-            scrolled ? "text-foreground" : "text-background"
+            scrolled ? "text-foreground" : "text-white"
           }`}
         >
           Amana&nbsp;Lofts
         </a>
         <div
           className={`hidden items-center gap-7 font-mono text-xs uppercase tracking-widest lg:flex ${
-            scrolled ? "text-muted-foreground" : "text-background/80"
+            scrolled ? "text-muted-foreground" : "text-white/80"
           }`}
         >
           {links.map((l) => (
@@ -48,7 +48,7 @@ export function SiteNav() {
               key={l.href}
               href={l.href}
               className={`transition-colors ${
-                scrolled ? "hover:text-foreground" : "hover:text-background"
+                scrolled ? "hover:text-foreground" : "hover:text-white"
               }`}
             >
               {l.label}
@@ -60,7 +60,7 @@ export function SiteNav() {
           className={`rounded-full px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${
             scrolled
               ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "border border-background/40 text-background hover:bg-background hover:text-foreground"
+              : "border border-white/40 text-white hover:bg-white hover:text-black"
           }`}
         >
           Join Interest List

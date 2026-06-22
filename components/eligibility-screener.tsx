@@ -41,6 +41,7 @@ export function EligibilityScreener() {
   const [household, setHousehold] = useState<number | null>(null)
   const [rangeId, setRangeId] = useState<string | null>(null)
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const assessment =
     household && rangeId ? assessEligibility(household, rangeId) : null
@@ -166,18 +167,18 @@ export function EligibilityScreener() {
                     {currentQuestion.detail}
                   </p>
 
-                  <div className="mt-8 grid grid-cols-2 gap-3">
+                  <div className="mt-10 grid grid-cols-2 gap-4">
                     <button
                       type="button"
                       onClick={() => answerQuiz(currentQuestion, "yes")}
-                      className="flex h-16 items-center justify-center rounded-2xl bg-secondary font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                      className="flex h-20 items-center justify-center rounded-3xl bg-secondary/60 font-serif text-xl text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-[1.02]"
                     >
                       Yes
                     </button>
                     <button
                       type="button"
                       onClick={() => answerQuiz(currentQuestion, "no")}
-                      className="flex h-16 items-center justify-center rounded-2xl bg-secondary font-medium text-foreground transition-colors hover:bg-primary hover:text-primary-foreground"
+                      className="flex h-20 items-center justify-center rounded-3xl bg-secondary/60 font-serif text-xl text-foreground transition-all duration-300 hover:bg-primary hover:text-primary-foreground hover:scale-[1.02]"
                     >
                       No
                     </button>
@@ -336,9 +337,30 @@ export function EligibilityScreener() {
                   </p>
 
                   <form
-                    className="mt-8 flex flex-col gap-5"
-                    onSubmit={(e) => {
+                    className="mt-10 flex flex-col gap-6"
+                    onSubmit={async (e) => {
                       e.preventDefault()
+                      setLoading(true)
+                      const form = e.target as HTMLFormElement
+                      const data = {
+                        name: (form.elements.namedItem("name") as HTMLInputElement).value,
+                        email: (form.elements.namedItem("email") as HTMLInputElement).value,
+                        phone: (form.elements.namedItem("phone") as HTMLInputElement).value,
+                        unit: (form.elements.namedItem("unit") as HTMLSelectElement).value,
+                        householdSize: household,
+                        incomeRange: rangeId,
+                        assessmentResult: assessment.result
+                      }
+                      try {
+                        await fetch("/api/screener", {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify(data)
+                        })
+                      } catch (error) {
+                        console.error(error)
+                      }
+                      setLoading(false)
                       setSubmitted(true)
                     }}
                   >
@@ -389,9 +411,9 @@ export function EligibilityScreener() {
                         <option value="two-bedroom">Two Bedroom</option>
                       </select>
                     </div>
-                    <Button type="submit" size="lg" className="mt-2 rounded-full">
-                      Join the interest list
-                      <ChevronRight className="size-4" />
+                    <Button type="submit" size="lg" disabled={loading} className="mt-4 h-14 rounded-full font-serif text-lg tracking-wide transition-transform hover:scale-[1.02]">
+                      {loading ? "Processing..." : "Join the interest list"}
+                      {!loading && <ChevronRight className="ml-2 size-5" />}
                     </Button>
                   </form>
 

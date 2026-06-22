@@ -90,7 +90,7 @@ export function Residences() {
   const current = units[active]
 
   return (
-    <section id="residences" className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+    <section id="residences" className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48">
       <div className="max-w-2xl">
         <p className="mb-5 font-mono text-xs uppercase tracking-[0.3em] text-primary">
           The Residences
