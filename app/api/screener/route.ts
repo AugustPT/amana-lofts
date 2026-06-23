@@ -10,6 +10,20 @@ const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/
 // the dashboard. The outcome is recomputed here server-side (not trusted from the
 // client) so the routing can't be spoofed.
 export async function POST(req: Request) {
+  // Only accept submissions from this site's own form. This relay forwards with the
+  // trusted Codex Mail secret, so reject cross-origin callers outright.
+  const host = req.headers.get('host') || ''
+  const origin = req.headers.get('origin')
+  if (origin && host) {
+    try {
+      if (new URL(origin).host !== host) {
+        return NextResponse.json({ error: 'forbidden' }, { status: 403 })
+      }
+    } catch {
+      return NextResponse.json({ error: 'forbidden' }, { status: 403 })
+    }
+  }
+
   let body: Record<string, unknown> = {}
   try {
     body = await req.json()
@@ -22,32 +36,32 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: true, outcome: 'qualified', skipped: 'bot' })
   }
 
-  const name = String(body.name || '').trim()
-  const email = String(body.email || '')
-    .trim()
-    .toLowerCase()
+  // Cap every field so the relay can't be used to push oversized payloads downstream.
+  const cap = (v: unknown, n: number) => String(v || '').trim().slice(0, n)
+  const name = cap(body.name, 120)
+  const email = cap(body.email, 200).toLowerCase()
   if (!EMAIL_RE.test(email)) {
     return NextResponse.json({ error: 'A valid email is required.' }, { status: 400 })
   }
 
-  const household = Number(body.household) || 1
-  const rangeId = String(body.rangeId || '')
+  const household = Math.min(6, Math.max(1, Number(body.household) || 1))
+  const rangeId = cap(body.rangeId, 40)
   const { outcome, ceiling } = assessEligibility(household, rangeId)
   const incomeRange = incomeRanges.find((r) => r.id === rangeId)?.label || ''
 
   const payload = {
     name,
     email,
-    phone: String(body.phone || '').trim(),
+    phone: cap(body.phone, 40),
     outcome: outcome as Outcome,
     householdSize: household,
     incomeRange,
     ceiling,
-    moveInTiming: String(body.timing || '').trim(),
-    desiredUnit: String(body.unit || '').trim(),
+    moveInTiming: cap(body.timing, 40),
+    desiredUnit: cap(body.unit, 60),
     extra: {
       acknowledged: body.acknowledged === true,
-      acknowledgedAt: String(body.acknowledgedAt || ''),
+      acknowledgedAt: cap(body.acknowledgedAt, 40),
     },
   }
 
