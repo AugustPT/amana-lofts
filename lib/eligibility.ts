@@ -9,16 +9,19 @@ export type Outcome = 'qualified' | 'under' | 'over'
 
 /**
  * Maximum qualifying gross annual household income — 80% of Area Median Income,
- * Honolulu County. Figures: HUD FY2024 Urban Honolulu 80% (Low) income limits.
- * VERIFY the current-year schedule + program tier with AREA / HHFDC before launch.
+ * Honolulu County. Figures: HHFDC + City & County of Honolulu DPP FY2025 schedule
+ * (effective Apr 1/15, 2025), "80% of median" column; 4-person MFI $129,300. Verified
+ * to the dollar against two official sources (HHFDC + City/County DPP).
+ * STILL CONFIRM with AREA/HHFDC: the program tier (general 80% vs LIHTC/MTSP) and the
+ * current program year, since the governing schedule can differ by deal type.
  */
 export const amiCeiling80: Record<number, number> = {
-  1: 76650,
-  2: 87600,
-  3: 98550,
-  4: 109450,
-  5: 118250,
-  6: 127000,
+  1: 85120,
+  2: 97280,
+  3: 109440,
+  4: 121600,
+  5: 131360,
+  6: 141120,
 }
 
 /**

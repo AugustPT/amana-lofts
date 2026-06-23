@@ -56,18 +56,10 @@ export function SiteFooter() {
             >
               Check If You May Qualify
             </a>
-            {/* TODO: replace with AREA's real leasing email + phone */}
-            <div className="mt-5 flex flex-col gap-1 text-sm text-muted-foreground">
-              <a
-                href="mailto:leasing@area-hawaii.com"
-                className="transition-colors hover:text-primary"
-              >
-                leasing@area-hawaii.com
-              </a>
-              <a href="tel:+18080000000" className="transition-colors hover:text-primary">
-                (808) 000-0000
-              </a>
-            </div>
+            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+              Inquiries are handled through the eligibility check above — the AREA
+              leasing team follows up with applicants directly.
+            </p>
           </div>
         </div>
 

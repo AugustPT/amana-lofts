@@ -90,6 +90,8 @@ export function EligibilityScreener() {
           household,
           rangeId,
           timing,
+          acknowledged: ack,
+          acknowledgedAt: new Date().toISOString(),
           company_website: honeypot,
         }),
       })

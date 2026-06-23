@@ -14,11 +14,22 @@ const fraunces = Fraunces({
   display: 'swap',
 })
 
+const SITE_TITLE = 'Amana Lofts — 80% AMI Affordable Rental Homes in Honolulu'
+const SITE_DESC =
+  'Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-, and two-bedroom homes at 765 Amana Street near Ala Moana. Check if you may qualify in about a minute. Leasing by Associated Real Estate Advisors (AREA).'
+
 export const metadata: Metadata = {
-  title: 'Amana Lofts — 80% AMI Affordable Rental Homes in Honolulu',
-  description:
-    'Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-, and two-bedroom homes at 765 Amana Street near Ala Moana. Check if you may qualify in about a minute. Leasing by Associated Real Estate Advisors (AREA).',
-  generator: 'v0.app',
+  metadataBase: new URL('https://amana-lofts-y8pj.vercel.app'),
+  title: SITE_TITLE,
+  description: SITE_DESC,
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    type: 'website',
+    siteName: 'Amana Lofts',
+    images: [{ url: '/hero-lifestyle.png', width: 1200, height: 630, alt: 'Amana Lofts — Honolulu' }],
+  },
+  twitter: { card: 'summary_large_image', title: SITE_TITLE, description: SITE_DESC, images: ['/hero-lifestyle.png'] },
   icons: {
     icon: [
       {

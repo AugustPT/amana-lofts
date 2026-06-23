@@ -45,6 +45,10 @@ export async function POST(req: Request) {
     ceiling,
     moveInTiming: String(body.timing || '').trim(),
     desiredUnit: String(body.unit || '').trim(),
+    extra: {
+      acknowledged: body.acknowledged === true,
+      acknowledgedAt: String(body.acknowledgedAt || ''),
+    },
   }
 
   const codexUrl = process.env.CODEX_MAIL_URL
