@@ -50,6 +50,7 @@ export function Gallery() {
                 src={img.src || "/placeholder.svg"}
                 alt={img.alt}
                 fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <span className="absolute inset-0 bg-foreground/0 transition-colors duration-300 group-hover:bg-foreground/15" />
@@ -82,6 +83,7 @@ export function Gallery() {
               src={images[active].src || "/placeholder.svg"}
               alt={images[active].alt}
               fill
+              sizes="(min-width: 1024px) 1024px, 100vw"
               className="object-contain"
             />
           </div>

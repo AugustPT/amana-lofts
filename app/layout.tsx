@@ -1,4 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
 import './globals.css'
@@ -22,6 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://amana-lofts-y8pj.vercel.app'),
   title: SITE_TITLE,
   description: SITE_DESC,
+  alternates: { canonical: '/' },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESC,
@@ -54,6 +56,25 @@ export const viewport: Viewport = {
   themeColor: [{ media: '(prefers-color-scheme: light)', color: '#f6f3ec' }],
 }
 
+// Structured data so search engines understand this is a specific residential
+// property at a fixed address — improves rich-result eligibility for local search.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ApartmentComplex',
+  name: 'Amana Lofts',
+  description: SITE_DESC,
+  url: 'https://amana-lofts-y8pj.vercel.app',
+  numberOfAccommodationUnits: 64,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '765 Amana Street',
+    addressLocality: 'Honolulu',
+    addressRegion: 'HI',
+    postalCode: '96814',
+    addressCountry: 'US',
+  },
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -61,12 +82,21 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-US"
       className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} bg-background`}
     >
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === 'production' && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
       </body>
     </html>
   )

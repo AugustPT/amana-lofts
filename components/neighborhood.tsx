@@ -107,6 +107,7 @@ export function Neighborhood() {
                   src={current.image || "/placeholder.svg"}
                   alt={current.name}
                   fill
+                  sizes="(min-width: 1024px) 60vw, 100vw"
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />

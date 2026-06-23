@@ -134,6 +134,7 @@ export function Residences() {
                 src={current.image || "/placeholder.svg"}
                 alt={`${current.name} residence at Amana Lofts`}
                 fill
+                sizes="(min-width: 1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </motion.div>

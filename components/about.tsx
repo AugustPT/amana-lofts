@@ -15,6 +15,7 @@ export function About() {
               src="/amana-building.png"
               alt="The Amana Lofts building exterior in Honolulu"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-cover"
             />
           </div>
