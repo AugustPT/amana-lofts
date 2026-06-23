@@ -52,6 +52,7 @@ export function EligibilityScreener() {
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [unit, setUnit] = useState("")
+  const [marketing, setMarketing] = useState(false)
   const [honeypot, setHoneypot] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState("")
@@ -70,6 +71,7 @@ export function EligibilityScreener() {
     setEmail("")
     setPhone("")
     setUnit("")
+    setMarketing(false)
     setError("")
     setResult(null)
   }
@@ -92,6 +94,7 @@ export function EligibilityScreener() {
           timing,
           acknowledged: ack,
           acknowledgedAt: new Date().toISOString(),
+          marketingConsent: marketing,
           company_website: honeypot,
         }),
       })
@@ -359,6 +362,19 @@ export function EligibilityScreener() {
                     ))}
                   </select>
                 </div>
+
+                <label className="flex cursor-pointer items-start gap-3">
+                  <input
+                    type="checkbox"
+                    checked={marketing}
+                    onChange={(e) => setMarketing(e.target.checked)}
+                    className="mt-0.5 size-5 shrink-0 accent-[var(--primary)]"
+                  />
+                  <span className="text-sm leading-relaxed text-muted-foreground">
+                    Keep me updated about Amana Lofts and similar opportunities by email.
+                    Optional — you can unsubscribe anytime.
+                  </span>
+                </label>
 
                 {error && (
                   <p

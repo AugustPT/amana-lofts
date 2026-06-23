@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const navLinks = [
   { href: "#about", label: "About" },
   { href: "#residences", label: "Residences" },
@@ -64,9 +66,25 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Amana Lofts. All rights reserved.
-          </p>
+          <div className="flex flex-col gap-3">
+            <p className="text-xs text-muted-foreground">
+              &copy; {new Date().getFullYear()} Amana Lofts. All rights reserved.
+            </p>
+            <nav
+              aria-label="Legal"
+              className="flex flex-wrap gap-4 font-mono text-[11px] uppercase tracking-widest text-muted-foreground"
+            >
+              <Link href="/privacy" className="transition-colors hover:text-foreground">
+                Privacy
+              </Link>
+              <Link href="/terms" className="transition-colors hover:text-foreground">
+                Terms
+              </Link>
+              <Link href="/accessibility" className="transition-colors hover:text-foreground">
+                Accessibility
+              </Link>
+            </nav>
+          </div>
           <div className="flex items-center gap-3">
             <span
               aria-hidden="true"

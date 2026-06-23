@@ -62,6 +62,7 @@ export async function POST(req: Request) {
     extra: {
       acknowledged: body.acknowledged === true,
       acknowledgedAt: cap(body.acknowledgedAt, 40),
+      marketingConsent: body.marketingConsent === true,
     },
   }
 
