@@ -9,11 +9,12 @@ export type Outcome = 'qualified' | 'under' | 'over'
 
 /**
  * Maximum qualifying gross annual household income — 80% of Area Median Income,
- * Honolulu County. Figures: HHFDC + City & County of Honolulu DPP FY2025 schedule
- * (effective Apr 1/15, 2025), "80% of median" column; 4-person MFI $129,300. Verified
- * to the dollar against two official sources (HHFDC + City/County DPP).
- * STILL CONFIRM with AREA/HHFDC: the program tier (general 80% vs LIHTC/MTSP) and the
- * current program year, since the governing schedule can differ by deal type.
+ * Honolulu County. Figures match the current Honolulu "80% of median" schedule (the
+ * "2026 AMI chart" amanalofts.com cites; City & County of Honolulu DPP + HHFDC, 4-person
+ * MFI $129,300) — verified to the dollar against official sources.
+ * STILL CONFIRM with AREA: whether all 64 units share this 80% limit or span multiple
+ * AMI tiers — the official eligibility page refers to "the unit's designated income
+ * limit," which can vary by unit.
  */
 export const amiCeiling80: Record<number, number> = {
   1: 85120,

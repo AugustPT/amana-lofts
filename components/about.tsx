@@ -34,9 +34,9 @@ export function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-7 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Amana Lofts reimagines a former office building as 64 contemporary
-              rental residences in the heart of Honolulu — an adaptive-reuse project
-              by JL Capital designed to make in-town living attainable.
+              Amana Lofts brings 64 new rental residences to the heart of Honolulu —
+              32 studios, 20 one-bedroom, and 12 two-bedroom homes by Amana Lofts LLC,
+              designed to make in-town living attainable.
             </p>
           </Reveal>
           <Reveal delay={0.125}>
@@ -44,9 +44,9 @@ export function About() {
               It’s an{" "}
               <span className="text-foreground">80% AMI affordable rental community</span>{" "}
               — homes are reserved for households earning at or below 80% of Honolulu’s
-              Area Median Income (for a family of four, generally under about $109,000 a
-              year). The quick eligibility check below estimates the limit for your
-              household in about a minute.
+              Area Median Income (for a family of four, generally under about $121,600 a
+              year, per the 2026 income chart). The quick eligibility check below
+              estimates the limit for your household in about a minute.
             </p>
           </Reveal>
           <Reveal delay={0.15}>

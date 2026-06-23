@@ -20,7 +20,7 @@ const units: Unit[] = [
     image: "/unit-studio.png",
     blurb:
       "An efficient, light-filled open layout that makes the most of every square foot.",
-    size: "~480 sq ft",
+    size: "289–346 sq ft",
     beds: "Open plan",
     baths: "1 bath",
     plan: "studio",
@@ -30,7 +30,7 @@ const units: Unit[] = [
     image: "/unit-one-bed.png",
     blurb:
       "A defined bedroom and a bright living space with contemporary finishes for everyday comfort.",
-    size: "~620 sq ft",
+    size: "365–393 sq ft",
     beds: "1 bedroom",
     baths: "1 bath",
     plan: "one",
@@ -39,8 +39,8 @@ const units: Unit[] = [
     name: "Two Bedroom",
     image: "/unit-two-bed.png",
     blurb:
-      "A spacious, flexible layout with room to share — ideal for roommates or a growing household.",
-    size: "~880 sq ft",
+      "A smart two-bedroom layout — ideal for roommates or a small household sharing the space.",
+    size: "471–561 sq ft",
     beds: "2 bedrooms",
     baths: "1 bath",
     plan: "two",

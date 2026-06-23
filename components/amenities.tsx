@@ -1,24 +1,24 @@
 import {
   ArrowUpDown,
   Car,
-  Bike,
   Share2,
   ShieldCheck,
-  Footprints,
   Bus,
   Building2,
+  Microwave,
+  WashingMachine,
 } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 
 const amenities = [
-  { icon: Footprints, title: "Walkable Neighborhood", body: "Shops, dining, and essentials within a short walk." },
-  { icon: Bus, title: "Transit Access", body: "TheBus routes and nearby stops just outside your door." },
-  { icon: Bike, title: "Bike Share", body: "Bike-share options for easy car-free trips around town." },
-  { icon: Share2, title: "Car Share", body: "Car-share access for when you need a vehicle." },
-  { icon: Car, title: "On-Site Parking", body: "Dedicated on-site parking for residents." },
-  { icon: ShieldCheck, title: "Controlled Access", body: "Secure, controlled building entry for peace of mind." },
-  { icon: ArrowUpDown, title: "Elevator Access", body: "Convenient elevator service throughout the building." },
-  { icon: Building2, title: "Modern Systems", body: "Contemporary systems in a reimagined building." },
+  { icon: Building2, title: "High Ceilings & Big Windows", body: "Over 10-foot ceilings and large, expansive windows in every home." },
+  { icon: WashingMachine, title: "Laundry Every Floor", body: "On-site laundry facilities on every floor of the building." },
+  { icon: Microwave, title: "Equipped Kitchens", body: "Built-in microwave and garbage disposal in every unit." },
+  { icon: ArrowUpDown, title: "Elevator", body: "Elevator service to every floor." },
+  { icon: ShieldCheck, title: "Secured Lobby", body: "A secured lobby and controlled building entry." },
+  { icon: Car, title: "Covered Parking", body: "Limited covered parking stalls available to rent." },
+  { icon: Share2, title: "Car Share & Bike Racks", body: "On-site car share plus bike racks for easy car-free trips." },
+  { icon: Bus, title: "Steps from Transit", body: "TheBus routes and Ala Moana Center just outside your door." },
 ]
 
 export function Amenities() {

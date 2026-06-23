@@ -21,7 +21,7 @@ export function SiteFooter() {
               Honolulu, Hawai&#699;i 96814
             </p>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              A development by JL Capital
+              A development by Amana Lofts LLC
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
               Leasing &amp; inquiries by Associated Real Estate Advisors (AREA)
