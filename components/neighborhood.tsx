@@ -134,6 +134,7 @@ export function Neighborhood() {
               <button
                 key={d.name}
                 type="button"
+                aria-pressed={isActive}
                 onMouseEnter={() => setActive(i)}
                 onClick={() => setActive(i)}
                 className={`group flex items-center justify-between gap-4 border-b border-border py-4 text-left transition-colors first:border-t ${

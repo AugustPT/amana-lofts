@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { X } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 
@@ -18,6 +18,28 @@ const images = [
 
 export function Gallery() {
   const [active, setActive] = useState<number | null>(null)
+  const closeRef = useRef<HTMLButtonElement>(null)
+
+  // When the lightbox opens: move focus into it, close on Escape, trap Tab on the
+  // close button (the only focusable control), and restore focus to the thumbnail
+  // that opened it when it closes.
+  useEffect(() => {
+    if (active === null) return
+    const prev = document.activeElement as HTMLElement | null
+    closeRef.current?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActive(null)
+      else if (e.key === "Tab") {
+        e.preventDefault()
+        closeRef.current?.focus()
+      }
+    }
+    document.addEventListener("keydown", onKey)
+    return () => {
+      document.removeEventListener("keydown", onKey)
+      prev?.focus()
+    }
+  }, [active])
 
   return (
     <section id="gallery" className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
@@ -68,6 +90,7 @@ export function Gallery() {
           aria-label="Image preview"
         >
           <button
+            ref={closeRef}
             type="button"
             onClick={() => setActive(null)}
             className="absolute right-6 top-6 flex size-10 items-center justify-center rounded-full bg-background/10 text-background transition-colors hover:bg-background/20"

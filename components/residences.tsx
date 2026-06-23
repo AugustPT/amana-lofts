@@ -106,6 +106,7 @@ export function Residences() {
           <button
             key={u.name}
             type="button"
+            aria-pressed={i === active}
             onClick={() => setActive(i)}
             className={`rounded-full px-6 py-3 font-mono text-xs uppercase tracking-widest transition-colors ${
               i === active

@@ -112,11 +112,17 @@ export function EligibilityScreener() {
   return (
     <div className="mx-auto w-full max-w-2xl">
       {/* Progress */}
-      <div className="mb-8 flex items-center justify-center gap-2 sm:gap-3">
+      <div
+        className="mb-8 flex items-center justify-center gap-2 sm:gap-3"
+        role="group"
+        aria-label="Application progress"
+      >
         {stepLabels.map((label, i) => (
           <div key={label} className="flex items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-2">
               <span
+                aria-current={i === step ? "step" : undefined}
+                aria-label={`Step ${i + 1} of ${stepLabels.length}: ${label}`}
                 className={`flex size-6 items-center justify-center rounded-full font-mono text-[11px] transition-colors ${
                   i <= step
                     ? "bg-primary text-primary-foreground"
@@ -149,11 +155,17 @@ export function EligibilityScreener() {
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 Include everyone who will live in the residence.
               </p>
-              <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-6">
+              <div
+                className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-6"
+                role="group"
+                aria-label="Household size"
+              >
                 {householdOptions.map((n) => (
                   <button
                     key={n}
                     type="button"
+                    aria-pressed={household === n}
+                    aria-label={`${n === 6 ? "6 or more" : n} ${n === 1 ? "person" : "people"}`}
                     onClick={() => {
                       setHousehold(n)
                       setStep(1)
@@ -180,11 +192,16 @@ export function EligibilityScreener() {
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 Combined annual income for everyone in the household, before taxes.
               </p>
-              <div className="mt-8 flex flex-col gap-2.5">
+              <div
+                className="mt-8 flex flex-col gap-2.5"
+                role="group"
+                aria-label="Total household income"
+              >
                 {incomeRanges.map((r) => (
                   <button
                     key={r.id}
                     type="button"
+                    aria-pressed={rangeId === r.id}
                     onClick={() => {
                       setRangeId(r.id)
                       setStep(2)
@@ -213,11 +230,16 @@ export function EligibilityScreener() {
               <p className="mt-4 leading-relaxed text-muted-foreground">
                 This helps the leasing team prioritize and follow up.
               </p>
-              <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <div
+                className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2"
+                role="group"
+                aria-label="Move-in timing"
+              >
                 {moveInOptions.map((t) => (
                   <button
                     key={t}
                     type="button"
+                    aria-pressed={timing === t}
                     onClick={() => {
                       setTiming(t)
                       setStep(3)
@@ -339,7 +361,10 @@ export function EligibilityScreener() {
                 </div>
 
                 {error && (
-                  <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive">
+                  <p
+                    role="alert"
+                    className="rounded-xl bg-destructive/10 px-4 py-3 text-sm text-destructive"
+                  >
                     {error}
                   </p>
                 )}
@@ -368,7 +393,7 @@ export function EligibilityScreener() {
           {/* Step 6 — Result */}
           {step === 5 && result && assessment && (
             <motion.div key="result" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={transition}>
-              <div className="py-2 text-center">
+              <div className="py-2 text-center" role="status" aria-live="polite" aria-atomic="true">
                 <div className="mx-auto mb-6 flex size-14 items-center justify-center rounded-full bg-primary/10">
                   <Check className="size-6 text-primary" />
                 </div>

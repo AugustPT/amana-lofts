@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import type { Metadata, Viewport } from 'next'
+import { Providers } from './providers'
 import { Geist, Geist_Mono, Fraunces } from 'next/font/google'
 import './globals.css'
 
@@ -90,7 +91,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {children}
+        <Providers>{children}</Providers>
         {process.env.NODE_ENV === 'production' && (
           <>
             <Analytics />
