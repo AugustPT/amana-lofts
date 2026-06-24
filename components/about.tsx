@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Reveal } from "@/components/reveal"
+import buildingImg from "../public/amana-building.webp"
 
 export function About() {
   return (
@@ -8,17 +9,15 @@ export function About() {
       className="border-t border-border bg-secondary/30 py-24 lg:py-32"
     >
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
-        {/* Image left */}
+        {/* Image left — the actual building, shown in full at its natural proportions */}
         <Reveal>
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
-            <Image
-              src="/amana-building.webp"
-              alt="The Amana Lofts building exterior in Honolulu"
-              fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+          <Image
+            src={buildingImg}
+            alt="The Amana Lofts building exterior in Honolulu"
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            placeholder="blur"
+            className="h-auto w-full rounded-3xl shadow-sm"
+          />
         </Reveal>
 
         {/* Text right */}
