@@ -8,20 +8,9 @@ export function About() {
       id="about"
       className="border-t border-border bg-secondary/30 py-24 lg:py-32"
     >
-      <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-20 lg:px-10">
-        {/* Image left — the actual building, shown in full at its natural proportions */}
-        <Reveal>
-          <Image
-            src={buildingImg}
-            alt="The Amana Lofts building exterior in Honolulu"
-            sizes="(min-width: 1024px) 50vw, 100vw"
-            placeholder="blur"
-            className="h-auto w-full rounded-3xl shadow-sm"
-          />
-        </Reveal>
-
-        {/* Text right */}
-        <div>
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-6 lg:grid-cols-5 lg:gap-16 lg:px-10">
+        {/* Text left */}
+        <div className="lg:col-span-2">
           <Reveal>
             <p className="mb-5 font-mono text-xs uppercase tracking-[0.3em] text-primary">
               About Amana Lofts
@@ -41,22 +30,26 @@ export function About() {
           </Reveal>
           <Reveal delay={0.125}>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-              It’s an{" "}
+              It&apos;s an{" "}
               <span className="text-foreground">80% AMI affordable rental community</span>{" "}
-              — homes are reserved for households earning at or below 80% of Honolulu’s
-              Area Median Income (for a family of four, generally under about $121,600 a
-              year, per the 2026 income chart). The quick eligibility check below
-              estimates the limit for your household in about a minute.
-            </p>
-          </Reveal>
-          <Reveal delay={0.15}>
-            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground">
-              Just off Ala Moana, you&apos;re steps from shopping, dining, jobs,
-              transit, and the beach — everything that makes urban island life
-              vibrant, within an easy walk.
+              — reserved for households earning at or below 80% of Honolulu&apos;s Area
+              Median Income (about $121,600 a year for a family of four, per the 2026
+              income chart). The quick eligibility check below estimates your
+              household&apos;s limit in about a minute.
             </p>
           </Reveal>
         </div>
+
+        {/* Image right — the actual building, shown in full at its natural proportions */}
+        <Reveal className="lg:col-span-3">
+          <Image
+            src={buildingImg}
+            alt="The Amana Lofts building exterior in Honolulu"
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            placeholder="blur"
+            className="h-auto w-full rounded-3xl shadow-sm"
+          />
+        </Reveal>
       </div>
     </section>
   )
