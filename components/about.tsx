@@ -12,7 +12,7 @@ export function About() {
         <Reveal>
           <div className="relative aspect-[4/5] overflow-hidden rounded-3xl">
             <Image
-              src="/amana-building.png"
+              src="/amana-building.webp"
               alt="The Amana Lofts building exterior in Honolulu"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"
