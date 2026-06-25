@@ -6,14 +6,12 @@ import { X } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 
 const images = [
-  { src: "/amana-building.webp", alt: "Amana Lofts building exterior", span: "row-span-2" },
-  { src: "/neighborhood-alamoana.png", alt: "Ala Moana district and beach park", span: "" },
+  { src: "/neighborhood-alamoana.png", alt: "Ala Moana district and beach park", span: "row-span-2" },
   { src: "/unit-one-bed.png", alt: "One-bedroom loft interior", span: "" },
   { src: "/gallery-kakaako.png", alt: "Kaka\u02bbako neighborhood street art", span: "row-span-2" },
   { src: "/unit-studio.png", alt: "Studio loft interior", span: "" },
   { src: "/gallery-lifestyle.png", alt: "Residents biking on a Honolulu street", span: "" },
   { src: "/unit-two-bed.png", alt: "Two-bedroom loft living area", span: "" },
-  { src: "/amana-hero.png", alt: "Amana Lofts at golden hour", span: "" },
 ]
 
 export function Gallery() {

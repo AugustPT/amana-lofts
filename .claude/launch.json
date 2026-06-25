@@ -2,6 +2,12 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "amana-lofts",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": ["/c", "cd /d C:\\PROJECTS\\Amana lofts && npx next dev -p 3001"],
+      "port": 3001
+    },
+    {
       "name": "codex-mail",
       "runtimeExecutable": "cmd",
       "runtimeArgs": ["/c", "cd /d C:\\PROJECTS\\codex-mail && npx next dev -p 3000"],

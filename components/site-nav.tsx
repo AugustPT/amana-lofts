@@ -26,21 +26,21 @@ export function SiteNav() {
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
           ? "border-b border-border bg-background/85 backdrop-blur-md"
-          : "border-b border-transparent"
+          : "bg-gradient-to-b from-black/45 to-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <a
           href="#top"
           className={`font-serif text-xl tracking-tight transition-colors ${
-            scrolled ? "text-foreground" : "text-background"
+            scrolled ? "text-foreground" : "text-white"
           }`}
         >
           Amana&nbsp;Lofts
         </a>
         <div
           className={`hidden items-center gap-7 font-mono text-xs uppercase tracking-widest lg:flex ${
-            scrolled ? "text-muted-foreground" : "text-background/80"
+            scrolled ? "text-muted-foreground" : "text-white/85"
           }`}
         >
           {links.map((l) => (
@@ -48,7 +48,7 @@ export function SiteNav() {
               key={l.href}
               href={l.href}
               className={`transition-colors ${
-                scrolled ? "hover:text-foreground" : "hover:text-background"
+                scrolled ? "hover:text-foreground" : "hover:text-white"
               }`}
             >
               {l.label}
@@ -60,7 +60,7 @@ export function SiteNav() {
           className={`rounded-full px-5 py-2 font-mono text-xs uppercase tracking-widest transition-colors ${
             scrolled
               ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "border border-background/40 text-background hover:bg-background hover:text-foreground"
+              : "border border-white/50 text-white hover:bg-white hover:text-background"
           }`}
         >
           Check Eligibility

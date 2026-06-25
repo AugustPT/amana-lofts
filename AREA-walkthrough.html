@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amana Lofts — How It Works (Applicant → Dashboard)</title>
+<style>
+  :root{
+    --bg:#f7f4ee; --card:#ffffff; --ink:#221f1a; --muted:#6f685b; --line:#e7e1d5;
+    --terra:#b9542d; --teal:#0e7490; --green:#15803d; --amber:#b45309; --red:#b91c1c;
+    --greenbg:#e9f6ee; --amberbg:#fbf1e0; --redbg:#fbeceb; --greybg:#f1efe8;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .serif{font-family:Georgia,"Times New Roman",serif}
+  .mono{font-family:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace}
+  .wrap{max-width:1040px;margin:0 auto;padding:48px 28px 80px}
+  .eyebrow{font:600 11px/1.4 "SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+    letter-spacing:.28em;text-transform:uppercase;color:var(--terra);margin:0 0 14px}
+  h1{font-family:Georgia,serif;font-weight:600;font-size:40px;line-height:1.08;margin:0 0 14px}
+  h2{font-family:Georgia,serif;font-weight:600;font-size:26px;margin:0 0 8px}
+  .lede{font-size:18px;color:var(--muted);max-width:680px;margin:0}
+  .section{margin-top:64px}
+  .ksub{font-size:15px;color:var(--muted);max-width:720px;margin:6px 0 0}
+  .tag{display:inline-block;font:600 11px/1 "SFMono-Regular",ui-monospace,Menlo,monospace;
+    letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
+  .step-strip{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+  .step-strip .s{flex:1 1 240px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:16px 18px}
+  .step-strip .n{font:600 12px/1 "SFMono-Regular",monospace;color:var(--terra);letter-spacing:.1em}
+  .step-strip .t{font-weight:600;margin:8px 0 4px}
+  .step-strip .d{font-size:14px;color:var(--muted)}
+
+  /* phone */
+  .rail{display:flex;flex-wrap:wrap;gap:30px 26px;margin-top:30px}
+  .fig{width:264px}
+  .phone{width:264px;background:#15130f;border-radius:38px;padding:9px;
+    box-shadow:0 22px 44px rgba(34,31,26,.20)}
+  .screen{position:relative;height:548px;border-radius:30px;overflow:hidden;background:#fff}
+  .notch{position:absolute;top:8px;left:50%;transform:translateX(-50%);width:84px;height:6px;
+    border-radius:99px;background:rgba(0,0,0,.18);z-index:5}
+  .cap{font-size:13.5px;color:var(--muted);margin:12px 4px 0;text-align:center}
+  .cap b{color:var(--ink)}
+
+  /* generic screen interior */
+  .sc{padding:30px 18px 18px;height:100%;overflow:hidden}
+  .sc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .brand{font-family:Georgia,serif;font-size:16px}
+  .pill-xs{font:600 8px/1 "SFMono-Regular",monospace;letter-spacing:.12em;text-transform:uppercase;
+    border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:var(--ink)}
+  .q-eye{font:600 9px/1.4 "SFMono-Regular",monospace;letter-spacing:.18em;text-transform:uppercase;color:var(--terra)}
+  .q-h{font-family:Georgia,serif;font-size:21px;line-height:1.15;margin:8px 0 6px}
+  .q-help{font-size:12px;color:var(--muted);margin:0 0 14px}
+  .opt{border:0;background:var(--greybg);border-radius:14px;padding:13px;font-size:13px;color:var(--ink);
+    display:flex;align-items:center;justify-content:space-between}
+  .opt.sel{background:var(--terra);color:#fff}
+  .grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+  .num{height:50px;border-radius:14px;background:var(--greybg);display:flex;align-items:center;justify-content:center;
+    font-family:Georgia,serif;font-size:20px}
+  .num.sel{background:var(--terra);color:#fff}
+  .stack{display:flex;flex-direction:column;gap:8px}
+  .prog{display:flex;align-items:center;gap:6px;margin-bottom:16px}
+  .dot{width:18px;height:18px;border-radius:99px;background:var(--greybg);color:var(--muted);
+    font:600 9px/18px "SFMono-Regular",monospace;text-align:center}
+  .dot.on{background:var(--terra);color:#fff}
+  .dline{flex:1;height:1px;background:var(--line)}
+  .crit{display:flex;gap:8px;align-items:flex-start;font-size:11.5px;color:var(--muted);margin-bottom:8px}
+  .ck{width:15px;height:15px;border-radius:99px;background:var(--greenbg);color:var(--green);
+    font-size:9px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;margin-top:1px}
+  .field{margin-bottom:9px}
+  .lab{font:600 9px/1 "SFMono-Regular",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+  .inp{border:1px solid var(--line);border-radius:10px;padding:9px 11px;font-size:12px;color:#9a948a}
+  .btn{background:var(--ink);color:#fff;border-radius:999px;padding:12px;text-align:center;
+    font:600 10px/1 "SFMono-Regular",monospace;letter-spacing:.12em;text-transform:uppercase;margin-top:12px}
+  .btn.out{background:transparent;border:1px solid var(--line);color:var(--ink)}
+
+  /* landing screen */
+  .land{height:100%;position:relative;color:#fff;
+    background:linear-gradient(158deg,#d8ab6e 0%,#b58f63 34%,#4a716f 70%,#1f5d63 100%)}
+  .land .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82),rgba(0,0,0,.30) 55%,rgba(0,0,0,.12))}
+  .land .ct{position:absolute;inset:0;padding:30px 18px 20px;display:flex;flex-direction:column;justify-content:flex-end}
+  .land .lnav{position:absolute;top:18px;left:18px;right:18px;display:flex;align-items:center;justify-content:space-between}
+  .land .leye{font:600 8px/1.5 "SFMono-Regular",monospace;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.92)}
+  .land .lh{font-family:Georgia,serif;font-size:27px;line-height:1.04;margin:8px 0 8px}
+  .land .lsub{font-size:11.5px;line-height:1.5;color:rgba(255,255,255,.92);margin:0 0 14px}
+
+  /* result screen */
+  .res{height:100%;padding:34px 20px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .res .ic{width:50px;height:50px;border-radius:99px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:14px}
+  .res .rb{font:600 9px/1 "SFMono-Regular",monospace;letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px}
+  .res .rh{font-family:Georgia,serif;font-size:19px;line-height:1.2;margin:0 0 10px}
+  .res .rbody{font-size:12px;color:var(--muted);line-height:1.55;margin:0 0 12px}
+  .res .rlimit{font-size:11.5px;color:var(--muted);background:var(--greybg);border-radius:12px;padding:10px 12px}
+  .res .rlimit b{color:var(--ink)}
+  .routed{font-size:13px;color:var(--muted);margin:10px 6px 0;text-align:center}
+  .routed b{color:var(--ink)}
+
+  /* dashboard */
+  .dash{background:#faf8f2;border:1px solid var(--line);border-radius:18px;padding:22px;margin-top:26px}
+  .dash-top{display:flex;align-items:center;gap:9px;margin-bottom:4px}
+  .dash-top .dt{font-family:Georgia,serif;font-size:22px}
+  .dash-top .live{width:9px;height:9px;border-radius:99px;background:var(--teal)}
+  .dash-top .store{margin-left:auto;font:600 10px/1 "SFMono-Regular",monospace;color:var(--muted);
+    border:1px solid var(--line);border-radius:999px;padding:6px 10px}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0 18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .stat .v{font-family:Georgia,serif;font-size:24px;line-height:1}
+  .stat .l{font:600 9px/1 "SFMono-Regular",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+  .filters{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px}
+  .ftab{font:600 11px/1 "SFMono-Regular",monospace;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:var(--muted);background:#fff}
+  .ftab.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .lead{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+  .lead-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .lead-h .nm{font-weight:600;font-size:15px}
+  .lead-h .new{margin-left:auto;font:600 9px/1 "SFMono-Regular",monospace;letter-spacing:.1em;color:var(--terra)}
+  .lead .dt{font-size:12px;color:var(--muted);margin:3px 0 12px}
+  .lgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 16px}
+  .lgrid .l{font:600 8px/1 "SFMono-Regular",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .lgrid .v{font-size:13px}
+  .lacts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+  .lacts .a{font:600 10px/1 "SFMono-Regular",monospace;letter-spacing:.08em;text-transform:uppercase;
+    border-radius:999px;padding:9px 14px;border:1px solid var(--line);color:var(--ink);background:#fff}
+  .lacts .a.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .ann{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .ann .a{flex:1 1 220px;font-size:13px;color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+  .ann .a b{color:var(--ink)}
+
+  .note{margin-top:60px;padding:18px 20px;border:1px solid var(--line);border-left:3px solid var(--terra);
+    border-radius:0 12px 12px 0;background:#fff;font-size:14px;color:var(--muted)}
+  .note b{color:var(--ink)}
+  .foot{margin-top:30px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px}
+  @page{size:Letter;margin:11mm}
+  @media print{
+    body{background:#fff}
+    .section,.fig,.dash,.lead,.step-strip .s,.ann .a{break-inside:avoid}
+    .wrap{padding:0;max-width:100%}
+    .rail{gap:20px 16px}
+  }
+  @media(max-width:560px){.stats{grid-template-columns:repeat(2,1fr)}.lgrid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Amana Lofts &middot; How it works</p>
+  <h1 class="serif">From a 1-minute check on a phone<br>to organized leads in your dashboard.</h1>
+  <p class="lede">This is the full path an applicant takes — and what your team sees on the back end. Every applicant is screened against the 80% AMI income limits and <b>auto-sorted</b> into Qualified, Under-income, or Over-income, so AREA always knows who to call first.</p>
+
+  <div class="step-strip">
+    <div class="s"><div class="n">01</div><div class="t">Applicant answers a few questions</div><div class="d">On their phone, in about a minute — no account, no paperwork.</div></div>
+    <div class="s"><div class="n">02</div><div class="t">The system checks the math</div><div class="d">Income &amp; household size are compared to the 80% AMI limits, server-side.</div></div>
+    <div class="s"><div class="n">03</div><div class="t">The lead lands sorted</div><div class="d">It arrives in your inbox and dashboard, tagged by outcome and ready to action.</div></div>
+  </div>
+
+  <!-- PART 1 -->
+  <div class="section">
+    <span class="tag" style="background:var(--greybg);color:var(--ink)">Part 1</span>
+    <h2 class="serif" style="margin-top:12px">The applicant experience (on their phone)</h2>
+    <p class="ksub">Mobile-first, plain language, and honest at every step — it never says "approved," only "you may be a fit."</p>
+
+    <div class="rail">
+
+      <!-- Landing -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="land"><div class="scrim"></div>
+            <div class="lnav"><div class="brand" style="color:#fff">Amana Lofts</div><div class="pill-xs" style="color:#fff;border-color:rgba(255,255,255,.5)">Check eligibility</div></div>
+            <div class="ct">
+              <div class="leye">80% AMI Affordable Rental Housing · 765 Amana Street</div>
+              <div class="lh">Affordable homes in the heart of Honolulu.</div>
+              <div class="lsub">Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-, and two-bedroom homes near Ala Moana, reserved for income-qualified households.</div>
+              <div class="btn" style="background:#fff;color:#15130f">Check if you may qualify</div>
+              <div class="btn out" style="border-color:rgba(255,255,255,.55);color:#fff">See the homes</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Landing.</b> They tap <b>Check if you may qualify</b>.</div>
+      </div>
+
+      <!-- Q1 household -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="sc">
+            <div class="prog"><span class="dot on">1</span><span class="dline"></span><span class="dot">2</span><span class="dline"></span><span class="dot">3</span><span class="dline"></span><span class="dot">4</span><span class="dline"></span><span class="dot">5</span></div>
+            <div class="q-h">How many people will live in the home?</div>
+            <div class="q-help">Include everyone who will live in the residence.</div>
+            <div class="grid6">
+              <div class="num">1</div><div class="num sel">2</div><div class="num">3</div>
+              <div class="num">4</div><div class="num">5</div><div class="num">6+</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Step 1.</b> Household size.</div>
+      </div>
+
+      <!-- Q2 income -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="sc">
+            <div class="prog"><span class="dot on">1</span><span class="dline"></span><span class="dot on">2</span><span class="dline"></span><span class="dot">3</span><span class="dline"></span><span class="dot">4</span><span class="dline"></span><span class="dot">5</span></div>
+            <div class="q-h">What is your total household income?</div>
+            <div class="q-help">Combined annual income for everyone, before taxes.</div>
+            <div class="stack">
+              <div class="opt">Under $25,000 <span>›</span></div>
+              <div class="opt">$25,000 – $40,000 <span>›</span></div>
+              <div class="opt sel">$60,000 – $80,000 <span>›</span></div>
+              <div class="opt">$80,000 – $100,000 <span>›</span></div>
+              <div class="opt">Over $120,000 <span>›</span></div>
+            </div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Step 2.</b> Income range — this drives the result.</div>
+      </div>
+
+      <!-- Q3 timing -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="sc">
+            <div class="prog"><span class="dot on">1</span><span class="dline"></span><span class="dot on">2</span><span class="dline"></span><span class="dot on">3</span><span class="dline"></span><span class="dot">4</span><span class="dline"></span><span class="dot">5</span></div>
+            <div class="q-h">When are you hoping to move in?</div>
+            <div class="q-help">This helps the leasing team prioritize and follow up.</div>
+            <div class="grid6" style="grid-template-columns:1fr 1fr">
+              <div class="num sel" style="font-family:inherit;font-size:13px;font-weight:600">ASAP</div>
+              <div class="num" style="font-family:inherit;font-size:13px">1–3 months</div>
+              <div class="num" style="font-family:inherit;font-size:13px">3–6 months</div>
+              <div class="num" style="font-family:inherit;font-size:13px">Just exploring</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Step 3.</b> Move-in timing.</div>
+      </div>
+
+      <!-- Q4 requirements -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="sc">
+            <div class="prog"><span class="dot on">1</span><span class="dline"></span><span class="dot on">2</span><span class="dline"></span><span class="dot on">3</span><span class="dline"></span><span class="dot on">4</span><span class="dline"></span><span class="dot">5</span></div>
+            <div class="q-h">A few things to know.</div>
+            <div class="q-help">Residents generally meet these — AREA confirms the details.</div>
+            <div class="crit"><span class="ck">✓</span> At least 18 years of age.</div>
+            <div class="crit"><span class="ck">✓</span> A U.S. citizen or qualifying resident alien.</div>
+            <div class="crit"><span class="ck">✓</span> Domiciled in Hawai‘i, intending to live in the home.</div>
+            <div class="crit"><span class="ck">✓</span> Income within the home's 80% AMI limit.</div>
+            <div class="crit"><span class="ck">✓</span> No majority interest in dwelling lands during the rental.</div>
+            <div class="crit"><span class="ck">✓</span> Household assets within the program limit.</div>
+            <div class="opt" style="background:var(--greybg);font-size:11px;margin-top:6px"><span style="display:flex;gap:7px"><span style="width:13px;height:13px;border-radius:4px;background:var(--terra);color:#fff;font-size:9px;display:flex;align-items:center;justify-content:center">✓</span> I've read these and want to continue.</span></div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Step 4.</b> Requirements — acknowledged, never a hard rejection.</div>
+      </div>
+
+      <!-- Q5 contact -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="sc">
+            <div class="prog"><span class="dot on">1</span><span class="dline"></span><span class="dot on">2</span><span class="dline"></span><span class="dot on">3</span><span class="dline"></span><span class="dot on">4</span><span class="dline"></span><span class="dot on">5</span></div>
+            <div class="q-h">Where can the team reach you?</div>
+            <div class="q-help">Your details go straight to the AREA leasing team.</div>
+            <div class="field"><div class="lab">Full name</div><div class="inp">Maria K.</div></div>
+            <div class="field"><div class="lab">Email</div><div class="inp">maria@email.com</div></div>
+            <div class="field"><div class="lab">Phone</div><div class="inp">(808) 555-0142</div></div>
+            <div class="field"><div class="lab">Desired residence</div><div class="inp">One Bedroom ▾</div></div>
+            <div class="btn">See my result ›</div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Step 5.</b> Contact details, then submit.</div>
+      </div>
+
+      <!-- Result -->
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="res">
+            <div class="ic" style="background:var(--greenbg);color:var(--green)">✓</div>
+            <div class="rb" style="color:var(--green)">You may be a fit</div>
+            <div class="rh">You may be a fit for Amana Lofts.</div>
+            <div class="rbody">Based on your answers, your household may be within the income range for these homes. This is an estimate, not an approval — final eligibility is confirmed by the AREA leasing team.</div>
+            <div class="rlimit">For a household of 2, the 80% AMI income limit is generally up to <b>$97,280</b> per year. Final limits vary by residence and are confirmed through income verification.</div>
+          </div>
+        </div></div>
+        <div class="cap"><b>Instant result.</b> Honest, not a promise — and the lead is already on its way to you.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PART 2 -->
+  <div class="section">
+    <span class="tag" style="background:var(--greybg);color:var(--ink)">Part 2</span>
+    <h2 class="serif" style="margin-top:12px">Three outcomes — every applicant is sorted into one</h2>
+    <p class="ksub">The result the applicant sees is computed server-side from the 80% AMI limits, and the same tag travels with the lead into your dashboard.</p>
+
+    <div class="rail">
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="res">
+            <div class="ic" style="background:var(--greenbg);color:var(--green)">✓</div>
+            <div class="rb" style="color:var(--green)">You may be a fit</div>
+            <div class="rh">You may be a fit for Amana Lofts.</div>
+            <div class="rbody">Within the income range for these homes. An estimate, not an approval.</div>
+          </div>
+        </div></div>
+        <div class="cap"><b style="color:var(--green)">Qualified.</b> Routed to your main interest list — call these first.</div>
+      </div>
+
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="res">
+            <div class="ic" style="background:var(--amberbg);color:var(--amber)">!</div>
+            <div class="rb" style="color:var(--amber)">We'll be in touch</div>
+            <div class="rh">Thanks — we've got your information.</div>
+            <div class="rbody">Income may be below the minimum needed to show ability to pay rent. The team follows up to confirm whether Amana Lofts or another option fits.</div>
+          </div>
+        </div></div>
+        <div class="cap"><b style="color:var(--amber)">Under income.</b> Flagged for a quick conversation — not rejected.</div>
+      </div>
+
+      <div class="fig">
+        <div class="phone"><div class="screen"><div class="notch"></div>
+          <div class="res">
+            <div class="ic" style="background:var(--redbg);color:var(--red)">↗</div>
+            <div class="rb" style="color:var(--red)">Future opportunities</div>
+            <div class="rh">Let's stay in touch.</div>
+            <div class="rbody">Household income may be above the 80% AMI limit. We've added them to AREA's future-opportunities list for a different home or program.</div>
+          </div>
+        </div></div>
+        <div class="cap"><b style="color:var(--red)">Over income.</b> Kept warm on a separate list — off your main pile.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PART 3 -->
+  <div class="section">
+    <span class="tag" style="background:var(--greybg);color:var(--ink)">Part 3</span>
+    <h2 class="serif" style="margin-top:12px">Your dashboard — the back end</h2>
+    <p class="ksub">Private, password-protected, and updated in real time. The moment someone submits, you see it here (and get an email).</p>
+
+    <div class="dash">
+      <div class="dash-top"><span class="live"></span><span class="dt serif">Amana Lofts</span><span class="store">store: Neon · live</span></div>
+
+      <div class="stats">
+        <div class="stat"><div class="v">14</div><div class="l">Total</div></div>
+        <div class="stat"><div class="v" style="color:var(--green)">9</div><div class="l">Qualified</div></div>
+        <div class="stat"><div class="v" style="color:var(--amber)">3</div><div class="l">Under</div></div>
+        <div class="stat"><div class="v" style="color:var(--red)">2</div><div class="l">Over</div></div>
+        <div class="stat"><div class="v" style="color:var(--terra)">5</div><div class="l">New</div></div>
+      </div>
+
+      <div class="filters">
+        <span class="ftab on">All outcomes</span><span class="ftab">Qualified</span><span class="ftab">Under</span><span class="ftab">Over</span>
+        <span class="ftab" style="margin-left:8px">New</span><span class="ftab">Contacted</span><span class="ftab">Archived</span>
+      </div>
+
+      <div class="lead">
+        <div class="lead-h"><span class="nm">Maria K.</span><span class="tag" style="background:var(--greenbg);color:var(--green)">Qualified</span><span class="new">New</span></div>
+        <div class="dt">Jun 24, 2026, 10:12 AM</div>
+        <div class="lgrid">
+          <div><div class="l">Email</div><div class="v">maria@email.com</div></div>
+          <div><div class="l">Phone</div><div class="v">(808) 555-0142</div></div>
+          <div><div class="l">Household</div><div class="v">2</div></div>
+          <div><div class="l">Income range</div><div class="v">$60,000 – $80,000</div></div>
+          <div><div class="l">Est. limit</div><div class="v">$97,280</div></div>
+          <div><div class="l">Residence</div><div class="v">One Bedroom</div></div>
+          <div><div class="l">Move-in</div><div class="v">ASAP</div></div>
+        </div>
+        <div class="lacts"><span class="a dark">Call</span><span class="a dark">Email</span><span class="a">Mark contacted</span><span class="a">Archive</span></div>
+      </div>
+
+      <div class="lead">
+        <div class="lead-h"><span class="nm">James L.</span><span class="tag" style="background:var(--amberbg);color:var(--amber)">Under income</span><span class="new">New</span></div>
+        <div class="dt">Jun 24, 2026, 9:03 AM</div>
+        <div class="lgrid">
+          <div><div class="l">Email</div><div class="v">james.l@email.com</div></div>
+          <div><div class="l">Phone</div><div class="v">(808) 555-0199</div></div>
+          <div><div class="l">Household</div><div class="v">1</div></div>
+          <div><div class="l">Income range</div><div class="v">Under $25,000</div></div>
+          <div><div class="l">Est. limit</div><div class="v">$85,120</div></div>
+          <div><div class="l">Residence</div><div class="v">Studio</div></div>
+          <div><div class="l">Move-in</div><div class="v">1–3 months</div></div>
+        </div>
+        <div class="lacts"><span class="a dark">Call</span><span class="a dark">Email</span><span class="a">Mark contacted</span><span class="a">Archive</span></div>
+      </div>
+
+      <div class="lead">
+        <div class="lead-h"><span class="nm">Dana P.</span><span class="tag" style="background:var(--redbg);color:var(--red)">Over income</span></div>
+        <div class="dt">Jun 23, 2026, 4:48 PM</div>
+        <div class="lgrid">
+          <div><div class="l">Email</div><div class="v">dana.p@email.com</div></div>
+          <div><div class="l">Phone</div><div class="v">(808) 555-0123</div></div>
+          <div><div class="l">Household</div><div class="v">3</div></div>
+          <div><div class="l">Income range</div><div class="v">Over $120,000</div></div>
+          <div><div class="l">Est. limit</div><div class="v">$109,440</div></div>
+          <div><div class="l">Residence</div><div class="v">Two Bedroom</div></div>
+          <div><div class="l">Move-in</div><div class="v">Just exploring</div></div>
+        </div>
+        <div class="lacts"><span class="a dark">Email</span><span class="a">Mark contacted</span><span class="a">Archive</span></div>
+      </div>
+
+      <div class="ann">
+        <div class="a"><b>Auto-sorted.</b> Each lead carries its outcome tag — filter to just Qualified to work the warmest first.</div>
+        <div class="a"><b>One-tap follow-up.</b> Call or email the applicant directly; replies go straight to them.</div>
+        <div class="a"><b>Stay organized.</b> Mark contacted or archive as you work the list. Search by name, email, or phone.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <b>Important framing built into every screen:</b> the check is a <b>preliminary, self-reported estimate — never an eligibility determination.</b> Final eligibility is confirmed by AREA through income and asset verification under the applicable affordable-housing (AMI) guidelines. Equal Housing Opportunity.
+  </div>
+
+  <div class="foot">
+    Amana Lofts · 765 Amana Street, Honolulu, HI 96814 · 80% AMI affordable rental community · Leasing by Associated Real Estate Advisors (AREA). &nbsp;|&nbsp; Walkthrough of the live eligibility funnel and leasing dashboard. Demo data shown; real applicants appear only in your private, password-protected dashboard.
+  </div>
+
+</div>
+</body>
+</html>
