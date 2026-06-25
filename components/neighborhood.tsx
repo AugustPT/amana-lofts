@@ -2,7 +2,6 @@
 
 import Image from "next/image"
 import { useState } from "react"
-import { AnimatePresence, motion } from "framer-motion"
 import { Footprints, Bike, Car } from "lucide-react"
 
 type Mode = "walk" | "bike" | "drive"
@@ -94,25 +93,26 @@ export function Neighborhood() {
         {/* Image viewer */}
         <div className="order-1 lg:col-span-3">
           <div className="relative aspect-[4/3] overflow-hidden rounded-3xl sm:aspect-[16/10]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={current.image}
-                initial={{ opacity: 0, scale: 1.02 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute inset-0"
-              >
-                <Image
-                  src={current.image || "/placeholder.svg"}
-                  alt={current.name}
-                  fill
-                  sizes="(min-width: 1024px) 60vw, 100vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
-              </motion.div>
-            </AnimatePresence>
+            {/* All images stay mounted and preloaded; switching cross-fades by
+                opacity (with a subtle zoom) so it always lands on the real image,
+                never a blank/gray frame. */}
+            {destinations.map((d, i) => (
+              <Image
+                key={d.image}
+                src={d.image}
+                alt={d.name}
+                fill
+                priority={i === 0}
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="object-cover"
+                style={{
+                  opacity: i === active ? 1 : 0,
+                  transform: i === active ? "scale(1)" : "scale(1.05)",
+                  transition: "opacity 500ms ease-out, transform 500ms ease-out",
+                }}
+              />
+            ))}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-foreground/70 to-transparent" />
 
             <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-6 sm:p-8">
               <h3 className="font-serif text-2xl text-background sm:text-3xl">
