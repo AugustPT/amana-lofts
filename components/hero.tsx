@@ -43,9 +43,8 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.18 }}
           className="mt-7 max-w-xl text-pretty text-lg leading-relaxed text-white/90 sm:text-xl"
         >
-          Amana Lofts is an 80% AMI affordable rental community — 64 studio, one-,
-          and two-bedroom homes near Ala Moana, reserved for income-qualified
-          households.
+          64 studio, one-, and two-bedroom homes near Ala Moana, reserved for
+          income-qualified households.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 24 }}
